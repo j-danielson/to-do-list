@@ -1,8 +1,9 @@
 var projectList = [];
 
-function generateProject(title, priority, dueDate, discription) {
-    this.title = title;
+function generateProject(priority, dueDate, discription) {
     this.priority = priority;
     this.dueDate = dueDate;
     this.discription = discription;
 }
+
+export {projectList, generateProject};

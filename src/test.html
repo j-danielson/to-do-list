@@ -2,10 +2,26 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>To-Do</title>
   <link rel="stylesheet" href="stylesheet.css" type="text/css">
   </head>
   <body>
+      <div id='header'></div>
+      <div id="projects"></div>
+      <div id="tasks"></div>
+      <!--Here be modals-->
+      <div id="newProjectModal">
+          <div id='conents'>
+              <p>New project?</p>
+              <form id="projectForm">
+                  <input type="text" placeholder="Project Name">
+                  <input type="number" placeholder="Priority">
+                  <input type="date" placeholder="Due Date">
+                  <input type="text" placeholder="Discription...">
+                  <button type='button' id="submitProject">submit </button>
+              </form>
+          </div>
+      </div>
   <script href="index.js"></script>
   </body>
 </html>
