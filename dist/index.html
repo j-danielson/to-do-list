@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>To-Do</title>
+    <link rel="shortcut icon" href="">
+  <!-- <link rel="stylesheet" href="stylesheet.css" type="text/css"> -->
+  </head>
+  <body>
+      <div id='header'></div>
+      <div id="projects"></div>
+      <div id="tasks"></div>
+      <!--Here be modals-->
+      <div id="newProjectModal">
+          <div id='conents'>
+              <p>New project?</p>
+              <form id="projectForm">
+                  <input id="projectTitle" type="text" placeholder="Project Name">
+                  <input id="projectPriority" type="number" placeholder="Priority">
+                  <input id="projectDueDate" type="date" placeholder="Due Date">
+                  <input id="projectDescription" type="text" placeholder="Description...">
+                  <button type='button' id="submitProject">submit </button>
+              </form>
+          </div>
+      </div>
+  <script src="main.js"></script>
+  </body>
+</html>
