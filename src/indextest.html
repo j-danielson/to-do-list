@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>To-Do</title>
+    <link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="styletest.css" type="text/css">
+  </head>
+  <body>
+      <div id='header'></div>
+      <div id="projectField">
+        <button id="addProjectBtn">+</button>
+      </div>
+      <div id="taskField">
+        <button id="addTaskBtn">+</button>
+      </div>
+      <!--Here be modals-->
+      <div id="newProjectModal">
+          <div id='projectContents'>
+              <form id="form">
+                <p>New project?</p>
+                <button type="reset" id="cancelProject">&times;</button>
+                  <input id="projectTitle" type="text" placeholder="Project Name">
+                  <button type='button' id="submitProject">submit </button>
+              </form>
+          </div>
+      </div>
+      <div id="newTaskModal">
+        <div id='taskContents'>
+            <form id="form">
+              <p>New Task?</p>
+              <button type="reset" id="cancelTask">&times;</button>
+                <input id="taskTitle" type="text" placeholder="Task Name">
+                <input id="taskPriority" type="number" placeholder="Priority">
+                <input id="taskDueDate" type="date" placeholder="Due Date">
+                <input id="taskDescription" type="text" placeholder="Description...">
+                <button type='button' id="submitTask">submit </button>
+            </form>
+        </div>
+    </div>
+  <script type="module" src="index.js"></script>
+  </body>
+</html>

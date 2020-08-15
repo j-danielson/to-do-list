@@ -1,10 +1,8 @@
 var projectList = [];
 
-function createNewProject(title, priority, dueDate, description) {
+function createNewProject(title) {
     this.title = title;
-    this.priority = priority;
-    this.dueDate = dueDate;
-    this.description = description;
+    this.active = false;
 }
 
 export {projectList, createNewProject};

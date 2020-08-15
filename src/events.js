@@ -1,25 +1,37 @@
-import {projectList, createNewProject} from './projects';
-import {generateProject} from './render';
+import {projectList, createNewProject} from './projects.js';
+import {generateProject, generateTask} from './render.js';
+import {createNewTask} from './tasks.js';
 
 function addProject() {
-
     var title = document.getElementById('projectTitle').value;
-    var priority = document.getElementById('projectPriority').value;
-    var dueDate = document.getElementById('projectDueDate').value;
-    var description = document.getElementById('projectDescription').value;
-    const project = new createNewProject(title, priority, dueDate, description);
+    const project = new createNewProject(title);
     console.log(project);
     projectList.push(project);
     console.log(projectList);
     generateProject(title);
 }
 
-function showModal(id) {
-    id.style.display = block;
+function addTask() {
+    var title = document.getElementById('taskTitle').value;
+    var priority = document.getElementById('taskPriority').value;
+    var dueDate = document.getElementById('taskDueDate').value;
+    var description = document.getElementById('taskDescription').value;
+    const task = new createNewTask(title, priority, dueDate, description);
+    console.log(task);
+    generateTask(title);
 }
 
-function hideModal(id) {
-    id.style.display = none;
+function setActiveProject(e) {
+    var activeproject = document.getElementsByClassName('activeProject')[0];
+    if(activeproject != e.currentTarget){
+        activeproject.classList.remove('activeProject');
+        e.currentTarget.classList.add('activeProject');
+        var current = projectList.find(({active}) => active == true);
+        current.active = false;
+        projectList[e.currentTarget.dataset.index].active = true;
+    }
+
 }
 
-export {addProject, showModal, hideModal};
+
+export {addProject, addTask, setActiveProject};
