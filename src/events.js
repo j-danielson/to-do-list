@@ -1,8 +1,11 @@
-import {projectList, createNewProject} from './projects';
-import {generateProject} from './render';
+import {projectList, createNewProject} from './projects.js';
+import {generateProject} from './render.js';
 
 function addProject() {
+    var title = document.getElementById('projectTitle').value;
+}
 
+function addTask() {
     var title = document.getElementById('projectTitle').value;
     var priority = document.getElementById('projectPriority').value;
     var dueDate = document.getElementById('projectDueDate').value;
@@ -14,12 +17,5 @@ function addProject() {
     generateProject(title);
 }
 
-function showModal(id) {
-    id.style.display = block;
-}
 
-function hideModal(id) {
-    id.style.display = none;
-}
-
-export {addProject, showModal, hideModal};
+export {addProject, addTask};
