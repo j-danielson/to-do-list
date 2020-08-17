@@ -7,12 +7,18 @@
   <link rel="stylesheet" href="styletest.css" type="text/css">
   </head>
   <body>
-      <div id='header'></div>
-      <div id="projectField">
-        <button id="addProjectBtn">+</button>
-      </div>
-      <div id="taskField">
-        <button id="addTaskBtn">+</button>
+      <div id='header'><p>Your Personal To-Do List</p></div>
+      <div class="container">
+        <div class="leftSide">
+          <div class="leftHeader">Projects</div>
+          <div id="projectField"></div>
+          <div><button id="addProjectBtn" class="newButton">+</button></div>
+        </div>
+        <div class="rightSide">
+          <div class="rightHeader">Tasks</div>
+          <div id="taskField"></div>
+          <div><button id="addTaskBtn" class="newButton">+</button></div>
+        </div> 
       </div>
       <!--Here be modals-->
       <div id="newProjectModal">

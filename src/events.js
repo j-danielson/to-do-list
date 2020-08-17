@@ -1,6 +1,6 @@
 import {projectList, createNewProject} from './projects.js';
-import {generateProject, generateTask} from './render.js';
-import {createNewTask} from './tasks.js';
+import {generateProject, generateTask, generateActiveTasks} from './render.js';
+import {createNewTask, tasks} from './tasks.js';
 
 function addProject() {
     var title = document.getElementById('projectTitle').value;
@@ -16,9 +16,11 @@ function addTask() {
     var priority = document.getElementById('taskPriority').value;
     var dueDate = document.getElementById('taskDueDate').value;
     var description = document.getElementById('taskDescription').value;
-    const task = new createNewTask(title, priority, dueDate, description);
+    var project = projectList.find(({active}) => active == true);
+    const task = new createNewTask(title, priority, dueDate, description, project.title.toString());
+    tasks.push(task);
     console.log(task);
-    generateTask(title);
+    generateTask(title, priority, dueDate, description);
 }
 
 function setActiveProject(e) {
@@ -27,8 +29,11 @@ function setActiveProject(e) {
         activeproject.classList.remove('activeProject');
         e.currentTarget.classList.add('activeProject');
         var current = projectList.find(({active}) => active == true);
+        console.log(current);
         current.active = false;
+        console.log(e.currentTarget.dataset.index);
         projectList[e.currentTarget.dataset.index].active = true;
+        generateActiveTasks();
     }
 
 }

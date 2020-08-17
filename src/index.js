@@ -45,3 +45,9 @@ addTaskButton.onclick = () => {
 cancelTaskButton.onclick = () => {
     hideModal(newTaskModal);
 }
+
+
+//What else I need to add
+//Add Delete/Complete buttons
+//change font
+//adjust forms to make it smoother

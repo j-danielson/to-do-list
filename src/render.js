@@ -1,6 +1,7 @@
 
 import {setActiveProject} from './events.js'
 import { projectList } from './projects.js';
+import {tasks} from './tasks.js';
 
 function generateProject(title){
     var container = document.getElementById('projectField');
@@ -14,22 +15,50 @@ function generateProject(title){
     }
     project.innerHTML = title;
     container.appendChild(project);
-    
-    //Need to create new task div
-    //make it invisable
-    //make task div visable when that project is active
 }
 
-function generateTask(title){
+function generateActiveTasks(){
     var container = document.getElementById('taskField');
-    var task = document.createElement('div');
-    task.setAttribute('class', 'task');
-    var current = projectList.find(({active}) => active == true);
-    task.classList.add(current.title.toString());
-    var content = document.createElement('p');
-    content.innerHTML = title;
-    task.appendChild(content);
-    container.appendChild(task);
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+    var activeProject = projectList.find(({active}) => active == true);
+    var projectTasks = tasks.filter(({project}) => project == activeProject.title);
+    console.log('this is projectTasks');
+    console.log(projectTasks);
+    projectTasks.forEach(task => {
+        var taskDiv = document.createElement('div');
+        taskDiv.setAttribute('class', 'task');
+        taskDiv.classList.add(task.priority);
+        var contentTitle = document.createElement('p');
+        var contentPriority = document.createElement('p');
+        var contentDueDate = document.createElement('p');
+        var contentDescription = document.createElement('p');
+        contentTitle.innerHTML = task.title;
+        contentPriority.innerHTML = 'Priority: ' + task.priority;
+        contentDueDate.innerHTML = 'Due: ' + task.dueDate;
+        contentDescription.innerHTML = task.description;
+        taskDiv.append(contentTitle, contentPriority, contentDueDate, contentDescription);
+        container.appendChild(taskDiv);
+    });
+
+}
+
+function generateTask(title, priority, dueDate, description){
+    var container = document.getElementById('taskField');
+    var taskDiv = document.createElement('div');
+    taskDiv.setAttribute('class', 'task');
+    taskDiv.classList.add(priority);
+    var contentTitle = document.createElement('p');
+    var contentPriority = document.createElement('p');
+    var contentDueDate = document.createElement('p');
+    var contentDescription = document.createElement('p');
+    contentTitle.innerHTML = title;
+    contentPriority.innerHTML = 'Priority: ' + priority;
+    contentDueDate.innerHTML = 'Due: ' + dueDate;
+    contentDescription.innerHTML = description;
+    taskDiv.append(contentTitle, contentPriority, contentDueDate, contentDescription);
+    container.appendChild(taskDiv);
 }
 
 function showModal(id) {
@@ -44,4 +73,4 @@ function hideModal(id) {
     }
 }
 
-export {generateProject, generateTask, showModal, hideModal};
+export {generateProject, generateTask, generateActiveTasks, showModal, hideModal};
